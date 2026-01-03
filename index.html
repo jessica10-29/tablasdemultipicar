@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablas de Multiplicar</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00c6fb;
+            transform: scale(1.05);
+        }
+
+        #resultado {
+            margin-top: 20px;
+            background: #f7f9fc;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .linea {
+            padding: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>📘 Tablas</h1>
+
+        <input type="number" id="numero" placeholder="Número">
+        <input type="number" id="hasta" placeholder="Hasta" value="10">
+
+        <button onclick="generarTabla()">Generar</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function generarTabla() {
+            let num = document.getElementById("numero").value;
+            let hasta = document.getElementById("hasta").value;
+            let resultado = document.getElementById("resultado");
+
+            resultado.innerHTML = "";
+
+            if (num === "" || hasta === "") {
+                resultado.innerHTML = "⚠️ Ingresa todos los datos.";
+                return;
+            }
+
+            let html = "<strong>Tabla del " + num + "</strong><br><br>";
+
+            for (let i = 1; i <= hasta; i++) {
+                html += `<div class="linea">${num} × ${i} = ${num * i}</div>`;
+            }
+
+            resultado.innerHTML = html;
+        }
+    </script>
+
+</body>
+</html>
